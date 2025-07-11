@@ -1,6 +1,8 @@
 package jp.co.sss.lms.controller;
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -144,4 +146,7 @@ public class AttendanceController {
 		return "attendance/detail";
 	}
 
+	SimpleDateFormat dateDate = new SimpleDateFormat("MM月DD日");
+	Date nowDate = new Date();
+	String formatDate = dateDate.format(nowDate);
 }
