@@ -43,7 +43,11 @@ public class StudentAttendanceService {
 	private LoginUserDto loginUserDto;
 	@Autowired
 	private TStudentAttendanceMapper tStudentAttendanceMapper;
-
+	
+	/* public Integer enterCount(Integer lmsUserId) {
+			 return tStudentAttendanceMapper.getLmsUserId();
+	    }
+	*/
 	/**
 	 * 勤怠一覧情報取得
 	 * 
