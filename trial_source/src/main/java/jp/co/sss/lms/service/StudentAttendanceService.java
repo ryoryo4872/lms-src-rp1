@@ -44,10 +44,12 @@ public class StudentAttendanceService {
 	@Autowired
 	private TStudentAttendanceMapper tStudentAttendanceMapper;
 	
-	/* public Integer enterCount(Integer lmsUserId) {
-			 return tStudentAttendanceMapper.getLmsUserId();
+	 public Integer enterCount(Integer lmsUserId) {
+		 Date trainingDate = dateUtil.getDateWithoutTime(new Date()); 
+		    short deleteFlg = 0;
+		 return tStudentAttendanceMapper.notEnterCount(lmsUserId, trainingDate, deleteFlg);
 	    }
-	*/
+	
 	/**
 	 * 勤怠一覧情報取得
 	 * 
