@@ -49,6 +49,15 @@ public class AttendanceController {
 				.getAttendanceManagement(loginUserDto.getCourseId(), loginUserDto.getLmsUserId());
 		model.addAttribute("attendanceManagementDtoList", attendanceManagementDtoList);
 
+
+		Integer count = studentAttendanceService.enterCount(loginUserDto.getLmsUserId());
+		if (count > 0) {
+			model.addAttribute("error", "過去日の勤怠に未入力があります。");
+			model.addAttribute("notEnterFlg", true); //
+		} else {
+			model.addAttribute("notEnterFlg", false); // 
+		}
+
 		return "attendance/detail";
 	}
 
