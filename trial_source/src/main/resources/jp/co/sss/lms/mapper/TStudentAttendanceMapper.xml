@@ -95,7 +95,7 @@
 	</insert>
 
 	<update id="update"
-		parameterType="jpo.sss.lms.entity.TStudentAttendance">
+		parameterType="jp.co.sss.lms.entity.TStudentAttendance">
 		UPDATE t_student_attendance
 		SET
 		training_start_time = #{trainingStartTime},
