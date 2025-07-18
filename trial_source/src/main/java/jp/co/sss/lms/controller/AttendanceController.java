@@ -48,7 +48,7 @@ public class AttendanceController {
 		List<AttendanceManagementDto> attendanceManagementDtoList = studentAttendanceService
 				.getAttendanceManagement(loginUserDto.getCourseId(), loginUserDto.getLmsUserId());
 		model.addAttribute("attendanceManagementDtoList", attendanceManagementDtoList);
-
+//追記文
 
 		Integer count = studentAttendanceService.enterCount(loginUserDto.getLmsUserId());
 		if (count > 0) {
