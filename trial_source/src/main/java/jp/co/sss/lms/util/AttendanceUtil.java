@@ -3,6 +3,7 @@ package jp.co.sss.lms.util;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.LinkedHashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -27,11 +28,14 @@ public class AttendanceUtil {
 	 * SSS定時・出退勤時間を元に、遅刻早退を判定をする
 	 * 
 	 * @param trainingStartTime 開始時刻
+	 * @param trainingStartMinute 開始時刻(分)
 	 * @param trainingEndTime   終了時刻
+	 * @param trainingEndMinute 終了時刻(分)
 	 * @return 遅刻早退を判定メソッド
 	 */
-	public AttendanceStatusEnum getStatus(TrainingTime trainingStartTime,
-			TrainingTime trainingEndTime) {
+	public AttendanceStatusEnum getStatus(
+			TrainingTime trainingStartTime, /*int trainingStartMinute,*/
+			TrainingTime trainingEndTime/*, int trainingEndMinute*/) {
 		return getStatus(trainingStartTime, trainingEndTime, Constants.SSS_WORK_START_TIME,
 				Constants.SSS_WORK_END_TIME);
 	}
@@ -146,5 +150,34 @@ public class AttendanceUtil {
 		}
 		return false;
 	}
+
+	//時間と分の抽出
+	//	[時間]
+	public static Map<String, String> getHourMap() {
+		Map<String, String> hourMap = new LinkedHashMap<>();
+		for (int i = 0; i < 24; i++) {
+			String key = String.format("%02d", i);
+			hourMap.put(key, key);
+		}
+		return hourMap;
+	}
+
+	//[分]
+	public static Map<String, String> getMinuteMap() {
+		Map<String, String> minuteMap = new LinkedHashMap<>();
+		for (int i = 0; i < 60; i++) {
+			String key = String.format("%02d", i);
+			minuteMap.put(key, key);
+		}
+		return minuteMap;
+	}
+
+	/* public static int extractHour(String time) {
+	     return Integer.parseInt(time.split(":")[0]);
+	 }
+	
+	 public static int extractMinute(String time) {
+	     return Integer.parseInt(time.split(":")[1]);
+	 }*/
 
 }

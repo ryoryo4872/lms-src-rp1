@@ -45,7 +45,7 @@ public class StudentAttendanceService {
 	private TStudentAttendanceMapper tStudentAttendanceMapper;
 	
 	 public Integer enterCount(Integer lmsUserId) {
-		 Date trainingDate = dateUtil.getDateWithoutTime(new Date()); // ← あなたの DateUtil に応じて実装
+		 Date trainingDate = dateUtil.getDateWithoutTime(new Date()); 
 		    short deleteFlg = 0;
 		 return tStudentAttendanceMapper.notEnterCount(lmsUserId, trainingDate, deleteFlg);
 	    }
@@ -274,7 +274,10 @@ public class StudentAttendanceService {
 
 		Integer lmsUserId = loginUserUtil.isStudent() ? loginUserDto.getLmsUserId()
 				: attendanceForm.getLmsUserId();
-
+		//追記箇所
+		/*model.addAttribute("minuteMap", AttendanceUtil.getMinuteMap());*/
+		
+		
 		// 現在の勤怠情報（受講生入力）リストを取得
 		List<TStudentAttendance> tStudentAttendanceList = tStudentAttendanceMapper
 				.findByLmsUserId(lmsUserId, Constants.DB_FLG_FALSE);

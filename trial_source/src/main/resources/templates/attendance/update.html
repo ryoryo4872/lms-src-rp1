@@ -30,10 +30,10 @@
 							<th class="w300">コース内容</th>
 							<th class="w70">出勤</th>
 							<!--							追記箇所-->
-							<th class="w75">(分)</th>
+							<th class="w70">(分)</th>
 							<th class="w70">退勤</th>
 							<!--							追記箇所-->
-							<th class="w75">(分)</th>
+							<th class="w70">(分)</th>
 							<th class="w80">中抜け時間</th>
 							<th class="w70">ステータス</th>
 							<th class="w240">備考</th>
@@ -61,81 +61,83 @@
 								<!--追記箇所-->
 
 								<td class="w70">
-									<select name="StartHour" th:name="|attendanceList[${stat.index}].trainingStartTime|"
-										th:value="${dailyAttendanceForm.trainingStartTime}" class="form-control" />
-									<option value="" selected hidden></option>
-									<option>00</option>
-									<option>01</option>
-									<option>02</option>
-									<option>03</option>
-									<option>04</option>
-									<option>05</option>
-									<option>06</option>
-									<option>07</option>
-									<option>08</option>
-									<option>09</option>
-									<option>10</option>
-									<option>11</option>
-									<option>12</option>
-									<option>13</option>
-									<option>14</option>
-									<option>15</option>
-									<option>16</option>
-									<option>17</option>
-									<option>18</option>
-									<option>19</option>
-									<option>20</option>
-									<option>21</option>
-									<option>22</option>
-									<option>23</option>
+									<select name="StartHour" th:field="*{trainingStartTimeHour}" th:name="|attendanceList[${stat.index}].trainingStartTime|"
+										th:value="${dailyAttendanceForm.trainingStartTime}" class="form-control">
+										<option value="" selected hidden></option>
+										<option>00</option>
+										<option>01</option>
+										<option>02</option>
+										<option>03</option>
+										<option>04</option>
+										<option>05</option>
+										<option>06</option>
+										<option>07</option>
+										<option>08</option>
+										<option>09</option>
+										<option>10</option>
+										<option>11</option>
+										<option>12</option>
+										<option>13</option>
+										<option>14</option>
+										<option>15</option>
+										<option>16</option>
+										<option>17</option>
+										<option>18</option>
+										<option>19</option>
+										<option>20</option>
+										<option>21</option>
+										<option>22</option>
+										<option>23</option>
 									</select>
-								<td>:</td>
+
 								</td>
 
-								<td class="w75">
-									<select name="StartMinute"
+								<td class="w70">
+									<select id="Sminutes" th:field="*{trainingStartTimeMinute}" name="StartMinute"
 										th:name="|attendanceList[${stat.index}].trainingStartMinute|"
-										th:value="${dailyAttendanceForm.trainingEndMinute}" class="form-control" />
+										th:value="${dailyAttendanceForm.trainingStartMinute}" class="form-control">
+									</select>
 								</td>
 
 
 
 								<!--追記箇所-->
 								<td class="w70">
-									<select name="EndHour" th:name="|attendanceList[${stat.index}].trainingEndTime|"
-										th:value="${dailyAttendanceForm.trainingEndTime}" class="form-control" />
-									<option value="" selected hidden></option>
-									<option>00</option>
-									<option>01</option>
-									<option>02</option>
-									<option>03</option>
-									<option>04</option>
-									<option>05</option>
-									<option>06</option>
-									<option>07</option>
-									<option>08</option>
-									<option>09</option>
-									<option>10</option>
-									<option>11</option>
-									<option>12</option>
-									<option>13</option>
-									<option>14</option>
-									<option>15</option>
-									<option>16</option>
-									<option>17</option>
-									<option>18</option>
-									<option>19</option>
-									<option>20</option>
-									<option>21</option>
-									<option>22</option>
-									<option>23</option>
+									<select name="EndHour" th:field="*{trainingEndTimeHour}" th:name="|attendanceList[${stat.index}].trainingEndTime|"
+										th:value="${dailyAttendanceForm.trainingEndTime}" class="form-control">
+										<option value="" selected hidden></option>
+										<option>00</option>
+										<option>01</option>
+										<option>02</option>
+										<option>03</option>
+										<option>04</option>
+										<option>05</option>
+										<option>06</option>
+										<option>07</option>
+										<option>08</option>
+										<option>09</option>
+										<option>10</option>
+										<option>11</option>
+										<option>12</option>
+										<option>13</option>
+										<option>14</option>
+										<option>15</option>
+										<option>16</option>
+										<option>17</option>
+										<option>18</option>
+										<option>19</option>
+										<option>20</option>
+										<option>21</option>
+										<option>22</option>
+										<option>23</option>
 									</select>
 								</td>
 
-								<td class="w75">
-									<select id="endMin " name="EndMinute"
+								<td class="w70">
+									<select id="Eminutes" th:field="*{trainingEndTimeMinute}" name="EndMinute"
 										th:name="|attendanceList[${stat.index}].trainingEndMinute|"
-										th:value="${dailyAttendanceForm.trainingEndMinute}" class="form-control" />
+										th:value="${dailyAttendanceForm.trainingEndMinute}" class="form-control">
+									</select>
 								</td>
 
 								<td class="w80">
@@ -169,13 +171,20 @@
 			</form>
 		</div>
 	</div>
-	<!--分 00～59生成-->
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script>
+ //追記箇所
+ //分 00～59生成
 		for (let i = 0; i < 60; i++) {
 			let val = String(i).padStart(2, '0');
-			$('#minutes').append(`<option value="${val}">${val}</option>`);
+			$('#Sminutes').append(`<option value="${val}">${val}</option>`);
 		}
+		
+		for (let i = 0; i < 60; i++) {
+			let val = String(i).padStart(2, '0');
+			$('#Eminutes').append(`<option value="${val}">${val}</option>`);
+		}
+
+
 	</script>
 </body>
 
