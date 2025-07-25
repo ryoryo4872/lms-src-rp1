@@ -149,6 +149,7 @@ public class AttendanceController {
 		String message = studentAttendanceService.update(attendanceForm);
 		model.addAttribute("message", message);
 		//追記箇所 task26
+		//マップ表示モデル
 		model.addAttribute("minuteMap", AttendanceUtil.getMinuteMap());
         model.addAttribute("hourMap", AttendanceUtil.getHourMap());
 		// 一覧の再取得
