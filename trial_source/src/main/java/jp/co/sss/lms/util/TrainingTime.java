@@ -44,6 +44,9 @@ public class TrainingTime implements Comparable<TrainingTime>, Serializable {
 	 * @param minute
 	 */
 	public TrainingTime(Integer hour, Integer minute) {
+		  System.out.println("DEBUG: setTimeStr received = " + hour); // ← ★ここを追加！
+		  System.out.println("DEBUG: setTimeStr received = " + minute);
+
 		if (!isValidTrainingTime(hour, minute)) {
 			throw new IllegalArgumentException();
 		}

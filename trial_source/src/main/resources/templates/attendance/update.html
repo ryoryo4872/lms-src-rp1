@@ -59,9 +59,9 @@
 								<td class="w140">[[${dailyAttendanceForm.dispTrainingDate}]]</td>
 								<td class="w300">[[${dailyAttendanceForm.sectionName}]]</td>
 								<!--追記箇所-->
-
+								<!--th:field="*{trainingStartTimeHour}"-->
 								<td class="w70">
-									<select name="StartHour" th:field="*{trainingStartTimeHour}" th:name="|attendanceList[${stat.index}].trainingStartTime|"
+									<select name="StartHour" th:name="|attendanceList[${stat.index}].trainingStartTime|"
 										th:value="${dailyAttendanceForm.trainingStartTime}" class="form-control">
 										<option value="" selected hidden></option>
 										<option>00</option>
@@ -91,9 +91,9 @@
 									</select>
 
 								</td>
-
+								<!--th:field="*{trainingStartTimeMinute}"-->
 								<td class="w70">
-									<select id="Sminutes" th:field="*{trainingStartTimeMinute}" name="StartMinute"
+									<select id="Sminutes" name="StartMinute"
 										th:name="|attendanceList[${stat.index}].trainingStartMinute|"
 										th:value="${dailyAttendanceForm.trainingStartMinute}" class="form-control">
 									</select>
@@ -102,8 +102,9 @@
 
 
 								<!--追記箇所-->
+								<!--th:field="*{trainingEndTimeHour}"-->
 								<td class="w70">
-									<select name="EndHour" th:field="*{trainingEndTimeHour}" th:name="|attendanceList[${stat.index}].trainingEndTime|"
+									<select name="EndHour" th:name="|attendanceList[${stat.index}].trainingEndTime|"
 										th:value="${dailyAttendanceForm.trainingEndTime}" class="form-control">
 										<option value="" selected hidden></option>
 										<option>00</option>
@@ -132,9 +133,11 @@
 										<option>23</option>
 									</select>
 								</td>
+								<!--追記箇所-->
+								<!--th:field="*{trainingEndTimeMinute}"-->
 
 								<td class="w70">
-									<select id="Eminutes" th:field="*{trainingEndTimeMinute}" name="EndMinute"
+									<select id="Eminutes" name="EndMinute"
 										th:name="|attendanceList[${stat.index}].trainingEndMinute|"
 										th:value="${dailyAttendanceForm.trainingEndMinute}" class="form-control">
 									</select>
@@ -172,13 +175,13 @@
 		</div>
 	</div>
 	<script>
- //追記箇所
- //分 00～59生成
+		//追記箇所
+		//分 00～59生成
 		for (let i = 0; i < 60; i++) {
 			let val = String(i).padStart(2, '0');
 			$('#Sminutes').append(`<option value="${val}">${val}</option>`);
 		}
-		
+
 		for (let i = 0; i < 60; i++) {
 			let val = String(i).padStart(2, '0');
 			$('#Eminutes').append(`<option value="${val}">${val}</option>`);
