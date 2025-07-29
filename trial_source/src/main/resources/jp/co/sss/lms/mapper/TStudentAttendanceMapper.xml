@@ -13,13 +13,13 @@
 	</select>
 	
 	<!-- 追記文 -->
-	<select id="notEnterCount" resultType="Integer">
+	<select id="findByEnpty" resultType="Integer">
 		SELECT COUNT(*) FROM t_student_attendance
 		WHERE lms_User_Id = #{lmsUserId}
 		AND delete_Flg = #{deleteFlg}
 		AND training_date &lt; #{trainingDate}
 		AND status != 1
-		AND (training_start_time=''
+		AND (trainingStart_time=''
 		OR training_end_time =''
 		OR training_start_time IS NULL
 		OR training_end_time IS NULL)

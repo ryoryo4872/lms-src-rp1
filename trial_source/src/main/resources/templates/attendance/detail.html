@@ -89,11 +89,11 @@
 			return hours + ':' + minutes;
 		}
 
-		
-			let notEnterFlg = /*[[${notEnterFlg}]]*/ false;
-	if (notEnterFlg) {
-		alert("過去日の勤怠に未入力があります。");
-	}
+		window.onload = function () {
+			if (notEnterFlg) {
+				alert("過去日の勤怠に未入力があります。");
+			}
+		};
 	</script>
 
 </body>
