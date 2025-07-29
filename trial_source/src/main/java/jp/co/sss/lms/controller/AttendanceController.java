@@ -49,7 +49,7 @@ public class AttendanceController {
 		List<AttendanceManagementDto> attendanceManagementDtoList = studentAttendanceService
 				.getAttendanceManagement(loginUserDto.getCourseId(), loginUserDto.getLmsUserId());
 		model.addAttribute("attendanceManagementDtoList", attendanceManagementDtoList);
-<<<<<<< HEAD
+
 //追記文
 
 		Integer count = studentAttendanceService.enterCount(loginUserDto.getLmsUserId());
@@ -59,8 +59,7 @@ public class AttendanceController {
 		} else {
 			model.addAttribute("notEnterFlg", false); // 
 		}
-=======
->>>>>>> branch 'main' of https://github.com/ryoryo4872/lms-src-rp1.git
+
 
 		return "attendance/detail";
 	}
